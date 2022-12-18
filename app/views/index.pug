@@ -1,0 +1,15 @@
+extend layout/main.pug
+block content 
+  .container.mt-5
+    .row
+      .col
+        .tex-center
+          .heading Dahsboard Statastic
+  .container.mt-3
+    .row.d-flex.justify-content-center(style='grid-gap: 10px;')
+      for cat in categories
+        .col-lg-3.col-md-4.col-sm-12
+          .tex-center.card-shape(style='background: #' + cat.background_color + ';')
+            .head-p.p-5
+              span.card-label.text-justify #{cat.name}
+              p.card-label &pound;#{cat.amount}

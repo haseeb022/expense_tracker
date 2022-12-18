@@ -1,0 +1,64 @@
+span{
+	color: white;
+	text-transform: capitalize;
+	font-family: roboto , sans-serif;
+	font-weight: 300;
+	font-size: 22px;
+	padding: 20px;
+
+}
+.active{
+	color: black;
+	text-transform: capitalize;
+	font-family: roboto , sans-serif;
+	font-weight: 400;
+	background: white;
+	/* border-radius: 5px; */
+	padding: 20px;
+}
+.nav-link span:hover{
+	background-color: #ffffff;
+    color: black;
+	padding: 20px;
+}
+.heading{
+	
+	color: black;
+	text-transform: capitalize;
+	font-family: roboto , sans-serif;
+	font-weight: 700;
+	text-align: center;
+	font-size: 40px;
+	
+
+}
+.container
+{
+    width: 0%;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+.card-label{
+		color: white;
+	text-transform: capitalize;
+	font-family: roboto , sans-serif;
+	font-weight: 400;
+	font-size: 30px;
+	word-wrap: no-wrap;
+}
+
+
+.card-shape{
+	border: 1px solid black;
+	width: 100%;
+	height: 180px;
+	border-radius: 12px;
+}
+.check{
+	border: 2px solid red;
+}
+.table th,td{
+	text-align: center;
+}
