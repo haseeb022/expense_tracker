@@ -1,7 +1,12 @@
 // Import express.js
 const express = require("express");
 
-// const { Student } = require("./models/student");
+//example to add more functions
+// const { categoryView, categoryAdd} = require("./controllers/categoryController");
+const { categoryView } = require("./controllers/categoryController");
+const { dashboardView } = require("./controllers/dashboardController");
+const { expenseView } = require("./controllers/expenseController");
+
 
 // Create express app
 var app = express();
@@ -15,30 +20,43 @@ app.use(express.static("static"));
 // Get the functions in the db.js file to use
 const db = require('./services/db');
 
+app.get('/', dashboardView);
+app.get('/categories', categoryView);
+app.get('/expenses', expenseView);
+
 // Create a route for root - /
-app.get("/", async function(req, res) {
-    sql = 'select c.name,c.background_color, SUM(e.amount) as amount from categories as c LEFT JOIN expense as e ON c.id=e.cat_id GROUP BY c.id';
-    db.query(sql).then(results => {
-        // console.log(results);
-        res.render("index", {'title': 'Dashboard', 'active_nav': 'dashboard', categories: results});
-    });
-});
+// app.get("/", async function(req, res) {
+//     var dashboard = new Dashboard();
+//     await dashboard.getStatistics();
+//     res.render("index", {'title': 'Dashboard', 'active_nav': 'dashboard', categories: dashboard.statistics});
+//     // sql = 'select c.name,c.background_color, SUM(e.amount) as amount from categories as c LEFT JOIN expense as e ON c.id=e.cat_id GROUP BY c.id';
+//     // db.query(sql).then(results => {
+//     //     // console.log(results);
+//     //     res.render("index", {'title': 'Dashboard', 'active_nav': 'dashboard', categories: results});
+//     // });
+// });
 
-app.get("/expenses", async function(req, res) {
-    // res.render('expenses');
-    sql = 'select c.id, c.name, e.amount from categories as c LEFT JOIN expense as e ON c.id=e.cat_id';
-    db.query(sql).then(results => {
-        res.render("expenses", {'title': 'Expenses', 'active_nav': 'expenses', expenses: results});
-    });
-});
+// app.get("/expenses", async function(req, res) {
+//     var expense = new Expense();
+//     await expense.getExpenses();
+//     res.render("expenses", {'title': 'Expenses', 'active_nav': 'expenses', expenses: expense.expenses});
+//     // res.render('expenses');
+//     // sql = 'select c.id, c.name, e.amount from categories as c LEFT JOIN expense as e ON c.id=e.cat_id';
+//     // db.query(sql).then(results => {
+//     //     res.render("expenses", {'title': 'Expenses', 'active_nav': 'expenses', expenses: results});
+//     // });
+// });
 
-app.get("/categories", async function(req, res) {
-    sql = 'select * from categories';
-    db.query(sql).then(results => {
-    // res.render('expenses');
-        res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: results});
-    });
-});
+// app.get("/categories", async function(req, res) {
+//     var category = new Category();
+//     await category.getCategories();
+//     res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category.categories});
+//     // sql = 'select * from categories';
+//     // db.query(sql).then(results => {
+//     // // res.render('expenses');
+//     //     res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: results});
+//     // });
+// });
 
 
 // // Create a route for testing the db
