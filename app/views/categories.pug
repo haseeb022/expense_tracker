@@ -5,7 +5,10 @@ block content
       .col
         .tex-center
           .heading All Categories
-    //- button.button.button4(type='button' onclick="alert('Hello world!')") Add New Expense
+  .container.mt-3
+    .row
+      .col(style="text-align: right;")
+        button.btn.btn-info(type='button' )(style="") Create New Category
   .container.mt-3
     .row.d-flex.justify-content-center
       table.table.table-bordered.table-striped.table-hover
@@ -20,6 +23,5 @@ block content
                     td #{cat.id}
                     td #{cat.name}
                     td
-                        button.btn.btn-info(type='button' )(style="margin: 0px 5px;") View
                         button.btn.btn-success(type='button' )(style="margin: 0px 5px;") Update
                         button.btn.btn-danger(type='button' )(style="margin: 0px 5px;") Delete
