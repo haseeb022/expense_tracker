@@ -4,9 +4,14 @@ const { Expense } = require("../models/expense");
 const { Category } = require("../models/category");
 
 expenseView = async (req, res) => {
+    var category_data = new Category();
+    await category_data.getCategories();
+
     var expense_data = new Expense();
     await expense_data.getExpenses();
-    res.render("expenses", {'title': 'Expenses', 'active_nav': 'expenses', expenses: expense_data.expenses});
+
+    res.render("expenses", {'title': 'Expenses', 'active_nav': 'expenses', expenses: expense_data.expenses, categories: category_data.categories});
+
 }
 
 

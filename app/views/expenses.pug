@@ -8,7 +8,35 @@ block content
   .container.mt-3
     .row
       .col(style="text-align: right;")
-        button.btn.btn-info(type='button' )(style="") Add New Expense
+        button.btn.btn-info(type='button' data-toggle="modal" data-target="#myModal")(style="") Add New Expense
+          
+
+        #myModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type="button",data-dismiss="modal")
+                  span(aria-hidden="false") &times;
+                  span.sr-only Close
+                h4.modal-title(id=id+"Label") Add new Expense
+                br
+              .modal-body
+                label(for="category",style="text-align: center;") Choose a category:
+                select(name="category" id="ctegory")
+                  for cat, key in categories
+                    option #{cat.name}
+
+                br
+                label(for="amount",style="text-align: center;") Enter an amount:  
+                input(type="double" id="amount" name="amount",)
+                br
+
+                input(type="submit" value="Submit" action="")
+
+              .modal-footer
+                button.btn.btn-default(type="button",data-dismiss="modal") Close
+
+
   .container.mt-3
     .row.d-flex.justify-content-center
       table.table.table-bordered.table-striped.table-hover
@@ -25,5 +53,28 @@ block content
               td #{expense.name}
               td &pound;#{expense.amount}
               td
-                button.btn.btn-success(type='button' )(style="margin: 0px 5px;") Update
+                button.btn.btn-success(type='button', data-toggle="modal" data-target="#updateModal")(style="margin: 0px 5px;") Update
+                #updateModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        button.close(type="button",data-dismiss="modal")
+                          span(aria-hidden="false") &times;
+                          span.sr-only Close
+                        h4.modal-title(id=id+"Label") Update Expense
+                        br
+                      .modal-body 
+                        label(for="expense",style="text-align: center;") Edit Amount: 
+                        input(type="double" id="amount" name="amount",)
+                        br
+                        input(type="submit" value="Submit" action="")
+
+                      .modal-footer
+                        button.btn.btn-default(type="button",data-dismiss="modal") Close
+
+                        
+                        
+                        
+
+
                 button.btn.btn-danger(type='button' )(style="margin: 0px 5px;") Delete
