@@ -14,6 +14,14 @@ expenseView = async (req, res) => {
 
 }
 
+expenseDelete = async (req, res) => {
+    var expenseid = req.params.id;
+    var delete_expense = new Expense(expenseid);
+    await delete_expense.deleteExpense();
+    res.redirect('/expenses');
+    //res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
+}
+
 
 
 
@@ -22,5 +30,5 @@ expenseView = async (req, res) => {
 
 
 module.exports =  {
-    expenseView
+    expenseView,expenseDelete
 };

@@ -54,27 +54,23 @@ block content
               td &pound;#{expense.amount}
               td
                 button.btn.btn-success(type='button', data-toggle="modal" data-target="#updateModal")(style="margin: 0px 5px;") Update
-                #updateModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
-                  .modal-dialog
-                    .modal-content
-                      .modal-header
-                        button.close(type="button",data-dismiss="modal")
-                          span(aria-hidden="false") &times;
-                          span.sr-only Close
-                        h4.modal-title(id=id+"Label") Update Expense
-                        br
-                      .modal-body 
-                        label(for="expense",style="text-align: center;") Edit Amount: 
-                        input(type="double" id="amount" name="amount",)
-                        br
-                        input(type="submit" value="Submit" action="")
+                a.btn.btn-danger(href='/delete_expense/' +expense.expense_id) Delete
 
-                      .modal-footer
-                        button.btn.btn-default(type="button",data-dismiss="modal") Close
+          #updateModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  button.close(type="button",data-dismiss="modal")
+                    span(aria-hidden="false") &times;
+                    span.sr-only Close
+                  h4.modal-title(id=id+"Label") Update Expense
+                  br
+                .modal-body 
+                  label(for="expense",style="text-align: center;") Edit Amount: 
+                  input(type="double" id="amount" name="amount",)
+                  br
+                  input(type="submit" value="Submit" action="")
 
-                        
-                        
-                        
-
-
-                button.btn.btn-danger(type='button' )(style="margin: 0px 5px;") Delete
+                .modal-footer
+                  button.btn.btn-default(type="button",data-dismiss="modal") Close
+                     
