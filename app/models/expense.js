@@ -19,7 +19,7 @@ class Expense {
     }
 
     async getExpenses() {
-        var sql = "select c.id, c.name, e.amount, e.id as expense_id from categories as c LEFT JOIN expense as e ON c.id=e.cat_id";
+        var sql = "select c.id, c.name, e.amount, e.id as expense_id from categories as c JOIN expense as e ON c.id=e.cat_id";
         const results = await db.query(sql);
         this.expenses = results;
     }

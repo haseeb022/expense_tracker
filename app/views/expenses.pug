@@ -57,25 +57,22 @@ block content
                 button.btn.btn-success(type='button', data-toggle="modal" data-target="#updateModal")(style="margin: 0px 5px;") Update
                 a.btn.btn-danger(href='/delete_expense/' +expense.expense_id) Delete
                 
-                #updateModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
-                  .modal-dialog
-                    .modal-content
-                      .modal-header
-                        button.close(type="button",data-dismiss="modal")
-                          span(aria-hidden="false") &times;
-                          span.sr-only Close
-                        h4.modal-title(id=id+"Label") Update Expense
+              #updateModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
+                .modal-dialog
+                  .modal-content
+                    .modal-header
+                      button.close(type="button",data-dismiss="modal")
+                        span(aria-hidden="false") &times;
+                        span.sr-only Close
+                      h4.modal-title(id=id+"Label") Update Expense
+                      br
+                    .modal-body 
+                      form(action='/editexpense' method='POST')
+                        label(for="expense",style="text-align: center;") Edit Amount: 
+                        input(type="number" id="amount" name="amount")
+                        input(type="hidden" name="expense_id" value=expense.expense_id)
                         br
-                      .modal-body 
-                        form(action='/editexpense' method='POST')
-                          label(for="expense",style="text-align: center;") Edit Amount: 
-                          input(type="number" id="amount" name="amount")
-                          input(type="hidden" name="expense_id" value=expense.expense_id)
-                          br
-                          input(type="submit" value="Submit")
+                        input(type="submit" value="Submit")
 
-                      .modal-footer
-                        button.btn.btn-default(type="button",data-dismiss="modal") Close
-
-                        
-           
+                    .modal-footer
+                      button.btn.btn-default(type="button",data-dismiss="modal") Close
