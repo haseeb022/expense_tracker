@@ -11,18 +11,15 @@ categoryView = async (req, res) => {
 
 
 
-categoryDelete = async (req, res) => {
-    var catid = req.params.id;
-    var delete_category = new Category(catid);
-    await delete_category.deleteCategory();
-    res.redirect('/categories');
-    //res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
-}
+
+
+
+
 
 
 
 
 
 module.exports =  {
-    categoryView,categoryDelete
+    categoryView
 };

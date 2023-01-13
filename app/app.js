@@ -3,9 +3,9 @@ const express = require("express");
 
 //example to add more functions
 // const { categoryView, categoryAdd} = require("./controllers/categoryController");
-const { categoryView,categoryDelete } = require("./controllers/categoryController");
+const { categoryView, categorycreate} = require("./controllers/categoryController");
 const { dashboardView } = require("./controllers/dashboardController");
-const { expenseView,expenseDelete } = require("./controllers/expenseController");
+const { expenseView, expensecreate, editexpense } = require("./controllers/expenseController");
 
 
 // Create express app
@@ -23,8 +23,8 @@ const db = require('./services/db');
 app.get('/', dashboardView);
 app.get('/categories', categoryView);
 app.get('/expenses', expenseView);
-app.get('/delete_category/:id', categoryDelete);
-app.get('/delete_expense/:id', expenseDelete);
+app.post('/createexpense', expensecreate);
+app.post('/editexpense', editexpense);
 
 // Create a route for root - /
 // app.get("/", async function(req, res) {

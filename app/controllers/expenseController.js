@@ -14,11 +14,23 @@ expenseView = async (req, res) => {
 
 }
 
-expenseDelete = async (req, res) => {
-    var expenseid = req.params.id;
-    var delete_expense = new Expense(expenseid);
-    await delete_expense.deleteExpense();
+expensecreate = async (req, res) => {
+    var postrequest = req.body;
+    var expensecreate = new Expense();
+    await expensecreate.createexpense(postrequest);
     res.redirect('/expenses');
+    //var category_data = new Category();
+    //await category_data.getCategories();
+    //res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
+}
+
+editexpense = async (req, res) => {
+    var postrequest = req.body;
+    var editexpense = new Expense();
+    await editexpense.editexpense(postrequest);
+    res.redirect('/expenses');
+    //var category_data = new Category();
+    //await category_data.getCategories();
     //res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
 }
 
@@ -30,5 +42,5 @@ expenseDelete = async (req, res) => {
 
 
 module.exports =  {
-    expenseView,expenseDelete
+    expenseView, expensecreate, editexpense
 };

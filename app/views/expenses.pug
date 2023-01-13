@@ -21,17 +21,18 @@ block content
                 h4.modal-title(id=id+"Label") Add new Expense
                 br
               .modal-body
-                label(for="category",style="text-align: center;") Choose a category:
-                select(name="category" id="ctegory")
-                  for cat, key in categories
-                    option #{cat.name}
+                form(action='/createexpense' method='POST')
+                  label(for="category",style="text-align: center;") Choose a category:
+                  select(name="category" id="ctegory")
+                    for cat, key in categories
+                      option(value=cat.id) #{cat.name}
 
-                br
-                label(for="amount",style="text-align: center;") Enter an amount:  
-                input(type="double" id="amount" name="amount",)
-                br
+                  br
+                  label(for="amount",style="text-align: center;") Enter an amount:  
+                  input(type="double" id="amount" name="amount",)
+                  br
 
-                input(type="submit" value="Submit" action="")
+                  input(type="submit" value="Submit")
 
               .modal-footer
                 button.btn.btn-default(type="button",data-dismiss="modal") Close
@@ -54,23 +55,29 @@ block content
               td &pound;#{expense.amount}
               td
                 button.btn.btn-success(type='button', data-toggle="modal" data-target="#updateModal")(style="margin: 0px 5px;") Update
-                a.btn.btn-danger(href='/delete_expense/' +expense.expense_id) Delete
+                #updateModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        button.close(type="button",data-dismiss="modal")
+                          span(aria-hidden="false") &times;
+                          span.sr-only Close
+                        h4.modal-title(id=id+"Label") Update Expense
+                        br
+                      .modal-body 
+                        form(action='/editexpense' method='POST')
+                          label(for="expense",style="text-align: center;") Edit Amount: 
+                          input(type="number" id="amount" name="amount")
+                          input(type="hidden" name="expense_id" value=expense.expense_id)
+                          br
+                          input(type="submit" value="Submit")
 
-          #updateModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
-            .modal-dialog
-              .modal-content
-                .modal-header
-                  button.close(type="button",data-dismiss="modal")
-                    span(aria-hidden="false") &times;
-                    span.sr-only Close
-                  h4.modal-title(id=id+"Label") Update Expense
-                  br
-                .modal-body 
-                  label(for="expense",style="text-align: center;") Edit Amount: 
-                  input(type="double" id="amount" name="amount",)
-                  br
-                  input(type="submit" value="Submit" action="")
+                      .modal-footer
+                        button.btn.btn-default(type="button",data-dismiss="modal") Close
 
-                .modal-footer
-                  button.btn.btn-default(type="button",data-dismiss="modal") Close
-                     
+                        
+                        
+                        
+
+
+                button.btn.btn-danger(type='button' )(style="margin: 0px 5px;") Delete
