@@ -55,6 +55,8 @@ block content
               td &pound;#{expense.amount}
               td
                 button.btn.btn-success(type='button', data-toggle="modal" data-target="#updateModal")(style="margin: 0px 5px;") Update
+                a.btn.btn-danger(href='/delete_expense/' +expense.expense_id) Delete
+                
                 #updateModal.modal(tabindex="-1",role="dialog",aria-labelledby=id+"Label" aria-hidden="false",style="text-align: center;")
                   .modal-dialog
                     .modal-content
@@ -76,8 +78,4 @@ block content
                         button.btn.btn-default(type="button",data-dismiss="modal") Close
 
                         
-                        
-                        
-
-
-                button.btn.btn-danger(type='button' )(style="margin: 0px 5px;") Delete
+           

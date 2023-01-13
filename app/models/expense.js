@@ -12,6 +12,8 @@ class Expense {
     // category array
     expenses = [];
 
+    expense_status=false;
+
     constructor(id = '') {
         this.id = id;
     }
@@ -38,6 +40,12 @@ class Expense {
         //var sql = "insert into expense(cat_id, amount) values(?, ?)";
         //const result = await db.query(sql, [postrequest.category, postrequest.amount]);
         //return result;
+    }
+
+    async deleteExpense() {
+        var sql = "DELETE FROM expense WHERE id = ?";
+        const results = await db.query(sql, [this.id]);
+        this.expense_status = true;
     }
     
     
