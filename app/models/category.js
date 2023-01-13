@@ -24,8 +24,9 @@ class Category {
     async deleteCategory() {
         var sql = "select COUNT(id) as total_expense from expense where cat_id = ?";
         const results = await db.query(sql, [this.id]);
-        if(results < 1)
+        if(results[0].total_expense < 1)
         {
+            console.log('inside if');
             var sql = "DELETE FROM categories WHERE id = ?";
             const results = await db.query(sql, [this.id]);
             this.cat_status = true;
