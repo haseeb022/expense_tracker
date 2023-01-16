@@ -12,7 +12,4 @@ block content
           .tex-center.card-shape(style='background: #' + cat.background_color + ';')
             .head-p.p-5
               span.card-label.text-justify #{cat.name}
-              if cat.amount != null 
-                p.card-label &pound; #{cat.amount}
-              else 
-                p.card-label &pound; 0
+              p.card-label &pound;#{cat.amount}
