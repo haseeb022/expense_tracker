@@ -9,16 +9,16 @@ categoryView = async (req, res) => {
     res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
 }
 
-categoryAdd = async (req, res) => {
-    var category_data = new Category();
-    await category_data.getCategories();
-    res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
-}
-categoryEdit = async (req, res) => {
-    var category_data = new Category();
-    await category_data.getCategories();
-    res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
-}
+// categoryAdd = async (req, res) => {
+//     var category_data = new Category();
+//     await category_data.getCategories();
+//     res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
+// }
+// categoryEdit = async (req, res) => {
+//     var category_data = new Category();
+//     await category_data.getCategories();
+//     res.render("categories", {'title': 'Categories', 'active_nav': 'categories', categories: category_data.categories});
+// }
 
 categoryDelete = async (req, res) => {
     var catid = req.params.id;
